@@ -3,6 +3,7 @@
 exports[`exposes public api 1`] = `
 Object {
   "MemoCache": [Function],
+  "__esModule": true,
   "createMemo": [Function],
   "createPromiseMemo": [Function],
 }
