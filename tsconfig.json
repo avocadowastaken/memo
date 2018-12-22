@@ -1,0 +1,30 @@
+{
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    // Do not compile.
+    "noEmit": true,
+
+    // Include es6 features.
+    "lib": ["es2015"],
+
+    // Build for es6 by default.
+    "target": "es2015",
+
+    // Target for node
+    "module": "es2015",
+    "moduleResolution": "node",
+
+    // Use inline sourcemaps for test debugging.
+    "inlineSourceMap": true,
+
+    // Code safety
+    "strict": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    // Bundle size optimization.
+    "noEmitHelpers": true,
+    "importHelpers": true
+  }
+}
