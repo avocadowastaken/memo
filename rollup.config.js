@@ -7,9 +7,23 @@ const nodeResolvePlugin = require("rollup-plugin-node-resolve");
 const pkg = require("./package.json");
 
 module.exports = [
-  createConfig({ target: "es5", outputFormat: "cjs", outputFile: pkg.main }),
-  createConfig({ target: "es5", outputFormat: "es", outputFile: pkg.module }),
-  createConfig({ target: "es2015", outputFormat: "es", outputFile: pkg.main }),
+  createConfig({
+    target: "es5",
+    outputFormat: "cjs",
+    outputFile: pkg.main,
+  }),
+
+  createConfig({
+    target: "es5",
+    outputFormat: "es",
+    outputFile: pkg.module,
+  }),
+
+  createConfig({
+    target: "es2015",
+    outputFormat: "es",
+    outputFile: pkg.es2015,
+  }),
 ];
 
 function createConfig({ target, outputFile, outputFormat }) {
