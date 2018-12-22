@@ -1,4 +1,4 @@
-import { AbstractMemoCache } from "../AbstractMemoCache";
+import { CacheLike } from "../CacheLike";
 
 interface LinkedMapNode<K, V> {
   key: K;
@@ -7,10 +7,7 @@ interface LinkedMapNode<K, V> {
   next?: LinkedMapNode<K, V>;
 }
 
-export class LinkedMapCache<TKey, TValue> extends AbstractMemoCache<
-  TKey,
-  TValue
-> {
+export class LinkedMapCache<TKey, TValue> implements CacheLike<TKey, TValue> {
   protected head?: LinkedMapNode<TKey, TValue>;
 
   protected tail?: LinkedMapNode<TKey, TValue>;
