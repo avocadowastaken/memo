@@ -1,0 +1,42 @@
+language: node_js
+
+cache: yarn
+
+notifications:
+  email: false
+
+node_js:
+  - "6"
+  - "8"
+  - "10"
+  - "11"
+
+install:
+  - yarn
+
+before_script:
+  - yarn ci
+
+script:
+  - yarn build
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: yarn codecov
+    on:
+      tags: false
+      node_js: "10"
+      branch: master
+      repo: umidbekkarimov/collections
+
+  - provider: npm
+    skip_cleanup: true
+    email: uma.karimov@gmail.com
+    api_key:
+      secure: $NPM_TOKEN
+    on:
+      tags: true
+      node_js: "10"
+      branch: master
+      repo: umidbekkarimov/collections

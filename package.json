@@ -17,6 +17,7 @@
     "lint": "stylotron lint",
     "test": "jest --watch",
     "cover": "jest --coverage",
+    "codecov": "codecov -f ./coverage/lcov.info",
     "build": "yarn build:bundle && yarn build:typings",
     "build:bundle": "rollup -c ./rollup.config.js",
     "build:typings": "yarn tsc --project tsconfig.typings.json"
@@ -37,6 +38,7 @@
     "@types/jest": "^23.3.10",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
+    "codecov": "^3.1.0",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.3.0",
