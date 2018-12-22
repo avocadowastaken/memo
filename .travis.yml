@@ -17,11 +17,8 @@ before_install:
 install:
   - yarn
 
-before_script:
-  - yarn ci
-
 script:
-  - yarn build
+  - yarn ci
 
 deploy:
   - provider: script
