@@ -14,10 +14,9 @@ export interface MemoCacheOptions<TKey> {
   readonly expireAfterAccess?: number;
 }
 
-class MemoCacheNode<TValue> {
-  public constructor(public value: TValue, public expiresAt: number) {
-    // noop.
-  }
+interface MemoCacheNode<TValue> {
+  value: TValue;
+  expiresAt: number;
 }
 
 export class MemoCache<TKey, TValue> extends AbstractMemoCache<TKey, TValue> {
@@ -73,10 +72,10 @@ export class MemoCache<TKey, TValue> extends AbstractMemoCache<TKey, TValue> {
       this.expireAfterAccess || 0,
     );
 
-    const node = new MemoCacheNode(
+    const node = {
       value,
-      expiresAfter === 0 ? Infinity : expiresAfter + Date.now(),
-    );
+      expiresAt: expiresAfter === 0 ? Infinity : expiresAfter + Date.now(),
+    };
 
     this.cache.prime(this.cacheKeyFn(key), node);
 
