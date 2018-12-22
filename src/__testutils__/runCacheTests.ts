@@ -1,10 +1,8 @@
-import { AbstractMemoCache } from "../memo-cache/AbstractMemoCache";
+import { CacheLike } from "../memo-cache/CacheLike";
 
 const MAX_SIZE = 5;
 
-export function runBaseCacheTests(
-  factory: () => AbstractMemoCache<number, number>,
-) {
+export function runBaseCacheTests(factory: () => CacheLike<number, number>) {
   it("primes value", () => {
     const cache = factory();
 
@@ -49,7 +47,7 @@ export function runBaseCacheTests(
 }
 
 export function runSizedCacheTests(
-  factory: (maxSize: number) => AbstractMemoCache<number, number>,
+  factory: (maxSize: number) => CacheLike<number, number>,
 ) {
   runBaseCacheTests(() => factory(MAX_SIZE));
 

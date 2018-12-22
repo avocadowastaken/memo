@@ -1,6 +1,6 @@
-import { AbstractMemoCache } from "../AbstractMemoCache";
+import { CacheLike } from "../CacheLike";
 
-export class MapCache<TKey, TValue> extends AbstractMemoCache<TKey, TValue> {
+export class MapCache<TKey, TValue> implements CacheLike<TKey, TValue> {
   protected map = new Map<TKey, TValue>();
 
   public get(key: TKey): TValue | undefined {
