@@ -2,7 +2,7 @@
   "name": "create-memo",
   "license": "MIT",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Memoization utils for JavaScript",
   "repository": "https://github.com/umidbekkarimov/memo.git",
   "author": "Umidbek Karimov",
