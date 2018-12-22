@@ -1,4 +1,4 @@
-import { AbstractMemoCache } from "./AbstractMemoCache";
+import { CacheLike } from "./CacheLike";
 import { LRUCache } from "./internal/LRUCache";
 import { MapCache } from "./internal/MapCache";
 
@@ -19,8 +19,8 @@ interface MemoCacheNode<TValue> {
   expiresAt: number;
 }
 
-export class MemoCache<TKey, TValue> extends AbstractMemoCache<TKey, TValue> {
-  protected readonly cache: AbstractMemoCache<
+export class MemoCache<TKey, TValue> implements CacheLike<TKey, TValue> {
+  protected readonly cache: CacheLike<
     MemoCacheKeyType<TKey>,
     MemoCacheNode<TValue>
   >;
@@ -38,8 +38,6 @@ export class MemoCache<TKey, TValue> extends AbstractMemoCache<TKey, TValue> {
     expireAfterAccess = 0,
     cacheKeyFn = (key: TKey) => key,
   }: MemoCacheOptions<TKey> = {}) {
-    super();
-
     this.cacheKeyFn = cacheKeyFn;
     this.expireAfterWrite = expireAfterWrite;
     this.expireAfterAccess = expireAfterAccess;
