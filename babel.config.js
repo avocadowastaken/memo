@@ -9,11 +9,7 @@ module.exports = api => {
     presets: [
       isTest && [
         "@babel/preset-env",
-        {
-          loose: true,
-          modules: "commonjs",
-          targets: { node: true },
-        },
+        { modules: "commonjs", targets: { node: true } },
       ],
 
       "@babel/preset-typescript",
