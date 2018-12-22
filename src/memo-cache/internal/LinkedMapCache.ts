@@ -1,26 +1,19 @@
 import { AbstractMemoCache } from "../AbstractMemoCache";
 
-class LinkedMapNode<K, V> {
-  public prev: LinkedMapNode<K, V> | null;
-
-  public next: LinkedMapNode<K, V> | null;
-
-  public constructor(public key: K, public value: V) {
-    this.key = key;
-    this.value = value;
-
-    this.prev = null;
-    this.next = null;
-  }
+interface LinkedMapNode<K, V> {
+  key: K;
+  value: V;
+  prev?: LinkedMapNode<K, V>;
+  next?: LinkedMapNode<K, V>;
 }
 
 export class LinkedMapCache<TKey, TValue> extends AbstractMemoCache<
   TKey,
   TValue
 > {
-  protected head: null | LinkedMapNode<TKey, TValue> = null;
+  protected head?: LinkedMapNode<TKey, TValue>;
 
-  protected tail: null | LinkedMapNode<TKey, TValue> = null;
+  protected tail?: LinkedMapNode<TKey, TValue>;
 
   protected map = new Map<TKey, LinkedMapNode<TKey, TValue>>();
 
@@ -52,7 +45,7 @@ export class LinkedMapCache<TKey, TValue> extends AbstractMemoCache<
 
       this.unlinkNode(node);
     } else {
-      node = new LinkedMapNode<TKey, TValue>(key, value);
+      node = { key, value };
 
       this.map.set(key, node);
     }
@@ -64,7 +57,7 @@ export class LinkedMapCache<TKey, TValue> extends AbstractMemoCache<
     const node = this.insert(key, value);
 
     node.next = this.head;
-    node.prev = null;
+    node.prev = undefined;
 
     if (this.head) {
       this.head.prev = node;
@@ -92,8 +85,8 @@ export class LinkedMapCache<TKey, TValue> extends AbstractMemoCache<
 
   public clearAll(): this {
     this.map.clear();
-    this.head = null;
-    this.tail = null;
+    this.head = undefined;
+    this.tail = undefined;
 
     return this;
   }
