@@ -10,8 +10,9 @@ module.exports = api => {
       isTest && [
         "@babel/preset-env",
         {
+          loose: true,
           modules: "commonjs",
-          targets: { node: "8.3.0" },
+          targets: { node: true },
         },
       ],
 
