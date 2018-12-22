@@ -12,7 +12,7 @@
   "es2015": "index.es2015.js",
   "typings": "typings/index.d.ts",
   "scripts": {
-    "ci": "yarn lint && yarn tsc && yarn cover",
+    "ci": "yarn lint && yarn tsc && yarn cover --ci --no-cache",
     "ci-fix": "yarn lint --fix && yarn tsc && yarn cover",
     "lint": "stylotron lint",
     "test": "jest --watch",
