@@ -34,7 +34,10 @@
         }
       ],
       [
-        "@pika/plugin-build-node"
+        "@pika/plugin-build-node",
+        {
+          "minNodeVersion": 8
+        }
       ],
       [
         "@pika/plugin-build-web"
