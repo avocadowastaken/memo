@@ -25,7 +25,7 @@ export class LRUCache<TKey, TValue> extends LinkedMapCache<TKey, TValue> {
     return node.value;
   }
 
-  private removeLatterlyUsed() {
+  private removeLatterlyUsed(): void {
     const { maxSize } = this.options;
     const itemsToRemove = this.map.size - maxSize + 1;
 

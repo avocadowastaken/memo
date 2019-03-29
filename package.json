@@ -11,52 +11,72 @@
   "module": "index.es.js",
   "es2015": "index.es2015.js",
   "typings": "typings/index.d.ts",
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "scripts": {
     "ci": "yarn lint && yarn tsc && yarn cover --ci --no-cache && yarn build",
-    "ci-fix": "yarn lint --fix && yarn tsc && yarn cover && yarn build",
     "lint": "stylotron lint",
     "test": "jest --watch",
     "cover": "jest --coverage",
     "codecov": "codecov -f ./coverage/lcov.info",
-    "build": "yarn build:bundle && yarn build:typings",
-    "build:bundle": "rollup -c ./rollup.config.js",
-    "build:typings": "yarn tsc --project tsconfig.typings.json"
+    "build": "yarn pika-pack build"
   },
-  "files": [
-    "index.js",
-    "index.es.js",
-    "index.es2015.js",
-    "typings/**"
-  ],
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg",
+        {
+          "exclude": [
+            "**/__tests__/**",
+            "**/__testutils__/**"
+          ]
+        }
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "./config/build-types"
+      ]
+    ]
+  },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.2.3",
-    "@babel/preset-env": "^7.2.3",
-    "@babel/preset-typescript": "^7.1.0",
-    "@dc0de/eslint-config": "^0.4.8",
-    "@dc0de/eslint-config-base": "^0.4.0",
-    "@dc0de/eslint-config-node": "^0.4.8",
-    "@types/jest": "^23.3.10",
-    "babel-core": "7.0.0-bridge.0",
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-typescript": "^7.3.3",
+    "@dc0de/eslint-config": "^0.5.7",
+    "@dc0de/eslint-config-base": "^0.5.0",
+    "@dc0de/eslint-config-node": "^0.5.5",
+    "@dc0de/jest-preset": "^0.0.8",
+    "@pika/pack": "^0.3.6",
+    "@pika/plugin-build-node": "^0.3.14",
+    "@pika/plugin-build-types": "^0.3.14",
+    "@pika/plugin-build-web": "^0.3.14",
+    "@pika/plugin-standard-pkg": "^0.3.14",
+    "@types/jest": "^24.0.11",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/parser": "^1.4.2",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
-    "codecov": "^3.1.0",
-    "eslint": "^5.3.0",
+    "codecov": "^3.2.0",
+    "eslint": "^5.15.3",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-import-resolver-typescript": "^1.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^8.0.0",
-    "eslint-plugin-typescript": "^0.14.0",
-    "import-sort": "^5.2.0",
-    "import-sort-parser-typescript": "^5.0.0",
-    "import-sort-style-module": "^5.0.0",
-    "jest": "^23.0.0",
-    "prettier": "^1.15.0",
-    "rollup": "^0.68.1",
-    "rollup-plugin-babel": "^4.1.0",
-    "rollup-plugin-node-resolve": "^4.0.0",
-    "rollup-plugin-prettier": "^0.5.0",
-    "rollup-plugin-size-snapshot": "^0.7.0",
-    "stylotron": "^0.0.10",
-    "typescript": "^3.2.2",
-    "typescript-eslint-parser": "^21.0.1"
+    "import-sort": "^6.0.0",
+    "import-sort-parser-typescript": "^6.0.0",
+    "import-sort-style-module": "^6.0.0",
+    "jest": "^24.5.0",
+    "jest-circus": "^23.6.0",
+    "prettier": "^1.16.4",
+    "stylotron": "^0.0.37",
+    "typescript": "^3.4.1"
   }
 }
