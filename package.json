@@ -16,7 +16,6 @@
   },
   "scripts": {
     "ci": "yarn lint && yarn tsc && yarn cover --ci --no-cache && yarn build",
-    "ci-fix": "yarn lint --fix && yarn tsc && yarn cover && yarn build",
     "lint": "stylotron lint",
     "test": "jest --watch",
     "cover": "jest --coverage",
