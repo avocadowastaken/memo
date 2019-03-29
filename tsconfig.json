@@ -14,17 +14,10 @@
     "module": "es2015",
     "moduleResolution": "node",
 
-    // Use inline sourcemaps for test debugging.
-    "inlineSourceMap": true,
-
     // Code safety
     "strict": true,
     "esModuleInterop": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-
-    // Bundle size optimization.
-    "noEmitHelpers": true,
-    "importHelpers": true
+    "noUnusedParameters": true
   }
 }
