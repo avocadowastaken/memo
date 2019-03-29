@@ -1,10 +1,10 @@
 import { CacheLike } from "../CacheLike";
 
-interface LinkedMapNode<K, V> {
-  key: K;
-  value: V;
-  prev?: LinkedMapNode<K, V>;
-  next?: LinkedMapNode<K, V>;
+interface LinkedMapNode<TKey, TValue> {
+  key: TKey;
+  value: TValue;
+  prev?: LinkedMapNode<TKey, TValue>;
+  next?: LinkedMapNode<TKey, TValue>;
 }
 
 export class LinkedMapCache<TKey, TValue> implements CacheLike<TKey, TValue> {
@@ -20,7 +20,7 @@ export class LinkedMapCache<TKey, TValue> implements CacheLike<TKey, TValue> {
     return node ? node.value : undefined;
   }
 
-  protected unlinkNode(acc: LinkedMapNode<TKey, TValue>) {
+  protected unlinkNode(acc: LinkedMapNode<TKey, TValue>): void {
     if (acc.prev) {
       acc.prev.next = acc.next;
     } else {
@@ -34,7 +34,7 @@ export class LinkedMapCache<TKey, TValue> implements CacheLike<TKey, TValue> {
     }
   }
 
-  protected insert(key: TKey, value: TValue) {
+  protected insert(key: TKey, value: TValue): LinkedMapNode<TKey, TValue> {
     let node: LinkedMapNode<TKey, TValue> | undefined = this.map.get(key);
 
     if (node) {
