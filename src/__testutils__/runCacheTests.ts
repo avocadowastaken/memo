@@ -2,7 +2,9 @@ import { CacheLike } from "../memo-cache/CacheLike";
 
 const MAX_SIZE = 5;
 
-export function runBaseCacheTests(factory: () => CacheLike<number, number>) {
+export function runBaseCacheTests(
+  factory: () => CacheLike<number, number>,
+): void {
   it("primes value", () => {
     const cache = factory();
 
@@ -48,7 +50,7 @@ export function runBaseCacheTests(factory: () => CacheLike<number, number>) {
 
 export function runSizedCacheTests(
   factory: (maxSize: number) => CacheLike<number, number>,
-) {
+): void {
   runBaseCacheTests(() => factory(MAX_SIZE));
 
   it("removes outdated values", () => {

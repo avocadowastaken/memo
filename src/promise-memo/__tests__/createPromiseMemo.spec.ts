@@ -1,10 +1,10 @@
 import { MemoCache } from "../../memo-cache/MemoCache";
 import { createPromiseMemo } from "../createPromiseMemo";
 
-function createCounter<K>() {
-  const cache = new Map<K, number>();
+function createCounter<TKey>(): (key: TKey) => Promise<number> {
+  const cache = new Map<TKey, number>();
 
-  return (key: K): Promise<number> => {
+  return (key: TKey): Promise<number> => {
     const count = (cache.get(key) || 0) + 1;
 
     cache.set(key, count);
@@ -14,6 +14,7 @@ function createCounter<K>() {
 }
 
 it("validates 'fn'", () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   expect(() => createPromiseMemo(null as any)).toThrowErrorMatchingSnapshot();
 });
 

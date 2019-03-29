@@ -2,7 +2,6 @@
   "root": true,
   "extends": "@dc0de/eslint-config",
   "rules": {
-    "no-await-in-loop": "off",
-    "typescript/no-explicit-any": "off"
+    "no-await-in-loop": "off"
   }
 }
