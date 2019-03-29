@@ -1,9 +1,6 @@
 # Distributive
 
-/typings
-/index.js
-/index.es.js
-/index.es2015.js
+/pkg
 
 # Tests
 /coverage

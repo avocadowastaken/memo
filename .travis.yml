@@ -6,6 +6,7 @@ notifications:
   email: false
 
 node_js:
+  - "8"
   - "10"
   - "11"
 
@@ -20,10 +21,13 @@ install:
 script:
   - yarn ci
 
+before_deploy:
+  - cd pkg
+
 deploy:
   - provider: script
     skip_cleanup: true
-    script: yarn codecov
+    script: cd .. && yarn codecov
     on:
       tags: false
       node_js: "10"

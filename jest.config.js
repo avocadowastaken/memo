@@ -7,11 +7,7 @@ module.exports = {
   transform: {
     "^.+\\.(ts|tsx)$": "babel-jest",
   },
-  collectCoverageFrom: [
-    "src/**/*.ts?(x)",
-    "!src/**/__tests__/**/*",
-    "!src/**/__testutils__/**/*",
-  ],
+  coveragePathIgnorePatterns: ["/__tests__/", "/__testutils__/"],
   coverageThreshold: {
     global: { statements: 100, branches: 100, functions: 100, lines: 100 },
   },

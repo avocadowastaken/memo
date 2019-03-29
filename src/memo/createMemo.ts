@@ -18,7 +18,6 @@ export function createMemo<TKey, TValue>(
   memo.cache = cache;
 
   return memo;
-
   function memo(key: TKey): TValue {
     let value = cache.get(key);
 
