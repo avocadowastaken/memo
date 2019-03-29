@@ -1,16 +1,10 @@
 {
   "name": "create-memo",
   "license": "MIT",
-  "private": false,
   "version": "0.1.1",
   "description": "Memoization utils for JavaScript",
   "repository": "https://github.com/umidbekkarimov/memo.git",
   "author": "Umidbek Karimov",
-  "sideEffects": false,
-  "main": "index.js",
-  "module": "index.es.js",
-  "es2015": "index.es2015.js",
-  "typings": "typings/index.d.ts",
   "engines": {
     "node": ">=8.0.0"
   },
