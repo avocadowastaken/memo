@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`validates 'fn' 1`] = `"Memo: 'fn' expected to be a 'function'."`;

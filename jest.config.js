@@ -1,14 +1,9 @@
-"use strict";
+'use strict';
 
 module.exports = {
-  testEnvironment: "node",
-  testMatch: ["**/*.spec.ts?(x)"],
-  moduleFileExtensions: ["ts", "tsx", "js"],
-  transform: {
-    "^.+\\.(ts|tsx)$": "babel-jest",
-  },
-  coveragePathIgnorePatterns: ["/__tests__/", "/__testutils__/"],
-  coverageThreshold: {
-    global: { statements: 100, branches: 100, functions: 100, lines: 100 },
-  },
+  // An array of regexp pattern strings used to skip coverage collection
+  coveragePathIgnorePatterns: ['/pkg/', '/node_modules/'],
+
+  // The glob patterns Jest uses to detect test files
+  testMatch: ['**/__tests__/**/*.spec.ts'],
 };

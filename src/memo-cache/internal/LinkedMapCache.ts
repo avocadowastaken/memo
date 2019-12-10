@@ -1,4 +1,4 @@
-import { CacheLike } from "../CacheLike";
+import { CacheLike } from '../CacheLike';
 
 interface LinkedMapNode<TKey, TValue> {
   key: TKey;
@@ -14,7 +14,7 @@ export class LinkedMapCache<TKey, TValue> implements CacheLike<TKey, TValue> {
 
   protected map = new Map<TKey, LinkedMapNode<TKey, TValue>>();
 
-  public get(key: TKey): TValue | undefined {
+  get(key: TKey): TValue | undefined {
     const node = this.map.get(key);
 
     return node ? node.value : undefined;
@@ -35,7 +35,7 @@ export class LinkedMapCache<TKey, TValue> implements CacheLike<TKey, TValue> {
   }
 
   protected insert(key: TKey, value: TValue): LinkedMapNode<TKey, TValue> {
-    let node: LinkedMapNode<TKey, TValue> | undefined = this.map.get(key);
+    let node = this.map.get(key);
 
     if (node) {
       node.value = value;
@@ -50,7 +50,7 @@ export class LinkedMapCache<TKey, TValue> implements CacheLike<TKey, TValue> {
     return node;
   }
 
-  public prime(key: TKey, value: TValue): this {
+  prime(key: TKey, value: TValue): this {
     const node = this.insert(key, value);
 
     node.next = this.head;
@@ -69,7 +69,7 @@ export class LinkedMapCache<TKey, TValue> implements CacheLike<TKey, TValue> {
     return this;
   }
 
-  public clear(key: TKey): this {
+  clear(key: TKey): this {
     const node = this.map.get(key);
 
     if (node) {
@@ -80,7 +80,7 @@ export class LinkedMapCache<TKey, TValue> implements CacheLike<TKey, TValue> {
     return this;
   }
 
-  public clearAll(): this {
+  clearAll(): this {
     this.map.clear();
     this.head = undefined;
     this.tail = undefined;
