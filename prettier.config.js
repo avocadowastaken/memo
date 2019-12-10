@@ -1,3 +1,3 @@
-"use strict";
+'use strict';
 
-module.exports = { trailingComma: "all" };
+module.exports = require('@superdispatch/prettier-config');

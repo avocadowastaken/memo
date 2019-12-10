@@ -1,5 +1,5 @@
-import { MemoCache } from "../../memo-cache/MemoCache";
-import { createPromiseMemo } from "../createPromiseMemo";
+import { MemoCache } from '../../memo-cache/MemoCache';
+import { createPromiseMemo } from '../createPromiseMemo';
 
 function createCounter<TKey>(): (key: TKey) => Promise<number> {
   const cache = new Map<TKey, number>();
@@ -14,11 +14,14 @@ function createCounter<TKey>(): (key: TKey) => Promise<number> {
 }
 
 it("validates 'fn'", () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  expect(() => createPromiseMemo(null as any)).toThrowErrorMatchingSnapshot();
+  expect(() =>
+    createPromiseMemo(null as any),
+  ).toThrowErrorMatchingInlineSnapshot(
+    `"Memo: 'fn' expected to be a 'function'."`,
+  );
 });
 
-it("exposes cache", () => {
+it('exposes cache', () => {
   const memo = createPromiseMemo(createCounter());
 
   expect(memo.cache).toBeInstanceOf(MemoCache);
@@ -38,20 +41,20 @@ it("evaluates 'fn' and wraps result with Promise", async () => {
   expect(fn).toHaveBeenCalledTimes(1);
 });
 
-it("removes rejected values", async () => {
+it('removes rejected values', async () => {
   const fn = jest.fn(key =>
-    key < 3 ? Promise.resolve(key) : Promise.reject(new Error("Rejected.")),
+    key < 3 ? Promise.resolve(key) : Promise.reject(new Error('Rejected.')),
   );
 
   const memo = createPromiseMemo<number, number>(fn);
 
-  expect(fn).toBeCalledTimes(0);
+  expect(fn).toHaveBeenCalledTimes(0);
 
   for (let i = 0; i < 5; i++) {
     if (i < 3) {
       await expect(memo(i)).resolves.toBe(i);
     } else {
-      await expect(memo(i)).rejects.toEqual(new Error("Rejected."));
+      await expect(memo(i)).rejects.toEqual(new Error('Rejected.'));
     }
   }
 });
