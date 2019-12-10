@@ -1,10 +1,10 @@
-import { LinkedMapCache } from './LinkedMapCache';
+import { LinkedMap } from './LinkedMap';
 
 export interface LRUCacheOptions {
   readonly maxSize: number;
 }
 
-export class LRUCache<TKey, TValue> extends LinkedMapCache<TKey, TValue> {
+export class LRUMap<TKey, TValue> extends LinkedMap<TKey, TValue> {
   protected readonly options: LRUCacheOptions;
 
   constructor(options: LRUCacheOptions) {

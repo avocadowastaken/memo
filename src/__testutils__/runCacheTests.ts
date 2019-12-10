@@ -1,9 +1,9 @@
-import { CacheLike } from '../CacheLike';
+import { MapLike } from '../MapLike';
 
 const MAX_SIZE = 5;
 
 export function runBaseCacheTests(
-  factory: () => CacheLike<number, number>,
+  factory: () => MapLike<number, number>,
 ): void {
   it('primes value', () => {
     const cache = factory();
@@ -49,7 +49,7 @@ export function runBaseCacheTests(
 }
 
 export function runSizedCacheTests(
-  factory: (maxSize: number) => CacheLike<number, number>,
+  factory: (maxSize: number) => MapLike<number, number>,
 ): void {
   runBaseCacheTests(() => factory(MAX_SIZE));
 

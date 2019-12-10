@@ -40,7 +40,7 @@ it('expires values after write', () => {
   spy.mockRestore();
 });
 
-it('expires values after access', () => {
+it('expires values after access', async () => {
   let time = 0;
   const cache = new MemoCache({ expireAfterAccess: 10 });
   const spy = jest.spyOn(Date, 'now').mockImplementation(() => time);

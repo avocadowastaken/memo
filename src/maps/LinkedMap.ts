@@ -1,4 +1,4 @@
-import { CacheLike } from '../CacheLike';
+import { MapLike } from '../MapLike';
 
 interface LinkedMapNode<TKey, TValue> {
   key: TKey;
@@ -7,11 +7,9 @@ interface LinkedMapNode<TKey, TValue> {
   next?: LinkedMapNode<TKey, TValue>;
 }
 
-export class LinkedMapCache<TKey, TValue> implements CacheLike<TKey, TValue> {
+export class LinkedMap<TKey, TValue> implements MapLike<TKey, TValue> {
   protected head?: LinkedMapNode<TKey, TValue>;
-
   protected tail?: LinkedMapNode<TKey, TValue>;
-
   protected map = new Map<TKey, LinkedMapNode<TKey, TValue>>();
 
   get(key: TKey): TValue | undefined {
