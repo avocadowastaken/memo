@@ -1,5 +1,5 @@
-import { assertFn } from "../internal/assertFn";
-import { MemoCache, MemoCacheOptions } from "../memo-cache/MemoCache";
+import { assertFn } from '../internal/assertFn';
+import { MemoCache, MemoCacheOptions } from '../memo-cache/MemoCache';
 
 export interface MemoFn<TKey, TValue> {
   (key: TKey): TValue;

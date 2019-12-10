@@ -1,7 +1,0 @@
-{
-  "root": true,
-  "extends": "@dc0de/eslint-config",
-  "rules": {
-    "no-await-in-loop": "off"
-  }
-}

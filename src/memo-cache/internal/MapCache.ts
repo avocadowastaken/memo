@@ -1,25 +1,25 @@
-import { CacheLike } from "../CacheLike";
+import { CacheLike } from '../CacheLike';
 
 export class MapCache<TKey, TValue> implements CacheLike<TKey, TValue> {
   protected map = new Map<TKey, TValue>();
 
-  public get(key: TKey): TValue | undefined {
+  get(key: TKey): TValue | undefined {
     return this.map.get(key);
   }
 
-  public prime(key: TKey, value: TValue): this {
+  prime(key: TKey, value: TValue): this {
     this.map.set(key, value);
 
     return this;
   }
 
-  public clear(key: TKey): this {
+  clear(key: TKey): this {
     this.map.delete(key);
 
     return this;
   }
 
-  public clearAll(): this {
+  clearAll(): this {
     this.map.clear();
 
     return this;

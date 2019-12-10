@@ -1,5 +1,5 @@
-import { MemoCache } from "../../memo-cache/MemoCache";
-import { createMemo } from "../createMemo";
+import { MemoCache } from '../../memo-cache/MemoCache';
+import { createMemo } from '../createMemo';
 
 function createCounter<TKey>(): (key: TKey) => number {
   const cache = new Map<TKey, number>();
@@ -14,11 +14,12 @@ function createCounter<TKey>(): (key: TKey) => number {
 }
 
 it("validates 'fn'", () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  expect(() => createMemo(null as any)).toThrowErrorMatchingSnapshot();
+  expect(() => createMemo(null as any)).toThrowErrorMatchingInlineSnapshot(
+    `"Memo: 'fn' expected to be a 'function'."`,
+  );
 });
 
-it("exposes cache", () => {
+it('exposes cache', () => {
   const memo = createMemo(createCounter());
 
   expect(memo.cache).toBeInstanceOf(MemoCache);

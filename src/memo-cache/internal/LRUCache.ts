@@ -1,4 +1,4 @@
-import { LinkedMapCache } from "./LinkedMapCache";
+import { LinkedMapCache } from './LinkedMapCache';
 
 export interface LRUCacheOptions {
   readonly maxSize: number;
@@ -7,13 +7,13 @@ export interface LRUCacheOptions {
 export class LRUCache<TKey, TValue> extends LinkedMapCache<TKey, TValue> {
   protected readonly options: LRUCacheOptions;
 
-  public constructor(options: LRUCacheOptions) {
+  constructor(options: LRUCacheOptions) {
     super();
 
     this.options = options;
   }
 
-  public get(key: TKey): TValue | undefined {
+  get(key: TKey): TValue | undefined {
     const node = this.map.get(key);
 
     if (!node) {
@@ -42,7 +42,7 @@ export class LRUCache<TKey, TValue> extends LinkedMapCache<TKey, TValue> {
     }
   }
 
-  public prime(key: TKey, value: TValue): this {
+  prime(key: TKey, value: TValue): this {
     if (!this.map.has(key)) {
       this.removeLatterlyUsed();
     }

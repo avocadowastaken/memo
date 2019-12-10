@@ -1,6 +1,6 @@
-import { CacheLike } from "./CacheLike";
-import { LRUCache } from "./internal/LRUCache";
-import { MapCache } from "./internal/MapCache";
+import { CacheLike } from './CacheLike';
+import { LRUCache } from './internal/LRUCache';
+import { MapCache } from './internal/MapCache';
 
 export type MemoCacheKeyType<TKey> = TKey | string | number;
 
@@ -31,7 +31,7 @@ export class MemoCache<TKey, TValue> implements CacheLike<TKey, TValue> {
 
   protected readonly expireAfterAccess: number;
 
-  public constructor({
+  constructor({
     maxSize,
 
     expireAfterWrite = 0,
@@ -45,7 +45,7 @@ export class MemoCache<TKey, TValue> implements CacheLike<TKey, TValue> {
     this.cache = !maxSize ? new MapCache() : new LRUCache({ maxSize });
   }
 
-  public get(key: TKey): TValue | undefined {
+  get(key: TKey): TValue | undefined {
     const node = this.cache.get(this.cacheKeyFn(key));
 
     if (node) {
@@ -62,9 +62,11 @@ export class MemoCache<TKey, TValue> implements CacheLike<TKey, TValue> {
 
       this.clear(key);
     }
+
+    return undefined;
   }
 
-  public prime(key: TKey, value: TValue): this {
+  prime(key: TKey, value: TValue): this {
     const expiresAfter = Math.max(
       this.expireAfterWrite || 0,
       this.expireAfterAccess || 0,
@@ -80,13 +82,13 @@ export class MemoCache<TKey, TValue> implements CacheLike<TKey, TValue> {
     return this;
   }
 
-  public clear(key: TKey): this {
+  clear(key: TKey): this {
     this.cache.clear(this.cacheKeyFn(key));
 
     return this;
   }
 
-  public clearAll(): this {
+  clearAll(): this {
     this.cache.clearAll();
 
     return this;
