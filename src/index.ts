@@ -1,4 +1,4 @@
-export * from './memo-cache/MemoCache';
+export * from './MemoCache';
 
-export * from './memo/createMemo';
-export * from './promise-memo/createPromiseMemo';
+export * from './createMemo';
+export * from './createPromiseMemo';
