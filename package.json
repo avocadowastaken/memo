@@ -1,6 +1,6 @@
 {
   "name": "create-memo",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Memoization utils for JavaScript",
   "repository": "https://github.com/umidbekkarimov/memo.git",
   "license": "MIT",
