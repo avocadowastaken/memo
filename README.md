@@ -9,3 +9,11 @@ Memoization utils for JavaScript
 [![npm type definitions](https://img.shields.io/npm/types/create-memo.svg)](https://npmjs.com/create-memo)
 [![npm downloads](https://img.shields.io/npm/dm/create-memo.svg)](https://npmjs.com/create-memo)
 [![npm license](https://img.shields.io/npm/l/create-memo.svg)](https://npmjs.com/create-memo)
+
+### Installation
+
+```bash
+npm i create-memo
+```
+
+### Usage

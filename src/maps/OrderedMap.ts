@@ -1,6 +1,6 @@
-import { CacheLike } from '../CacheLike';
+import { MapLike } from '../MapLike';
 
-export class MapCache<TKey, TValue> implements CacheLike<TKey, TValue> {
+export class OrderedMap<TKey, TValue> implements MapLike<TKey, TValue> {
   protected map = new Map<TKey, TValue>();
 
   get(key: TKey): TValue | undefined {

@@ -8,7 +8,10 @@
     },
     {
       "files": "**/__tests__/**/*.ts",
-      "extends": "plugin:@superdispatch/jest",
+      "extends": "plugin:@superdispatch/jest"
+    },
+    {
+      "files": "**/{__tests__,__testutils__}/**/*.ts",
       "rules": {
         "quotes": "off",
         "@typescript-eslint/no-explicit-any": "off"

@@ -1,17 +1,5 @@
 import { createPromiseMemo } from '../createPromiseMemo';
-import { MemoCache } from '../MemoCache';
-
-function createCounter<TKey>(): (key: TKey) => Promise<number> {
-  const cache = new Map<TKey, number>();
-
-  return (key: TKey): Promise<number> => {
-    const count = (cache.get(key) || 0) + 1;
-
-    cache.set(key, count);
-
-    return Promise.resolve(count);
-  };
-}
+import { PromiseMemoCache } from '../PromiseMemoCache';
 
 it("validates 'fn'", () => {
   expect(() =>
@@ -22,39 +10,21 @@ it("validates 'fn'", () => {
 });
 
 it('exposes cache', () => {
-  const memo = createPromiseMemo(createCounter());
+  const memo = createPromiseMemo(() => Promise.resolve());
 
-  expect(memo.cache).toBeInstanceOf(MemoCache);
+  expect(memo.cache).toBeInstanceOf(PromiseMemoCache);
 });
 
-it("evaluates 'fn' and wraps result with Promise", async () => {
-  const fn = jest.fn(createCounter());
+it("evaluates 'fn'", async () => {
+  const fn = jest.fn(value => value + 1);
   const memo = createPromiseMemo(fn);
 
   expect(fn).toHaveBeenCalledTimes(0);
 
-  for (let i = 0; i < 5; i++) {
-    expect(memo(1)).toBeInstanceOf(Promise);
-    await expect(memo(1)).resolves.toBe(1);
-  }
+  expect(memo(0)).toBeInstanceOf(Promise);
+  expect(memo(0)).toBeInstanceOf(Promise);
+  expect(memo(0)).toBeInstanceOf(Promise);
+  await expect(memo(0)).resolves.toBe(1);
 
   expect(fn).toHaveBeenCalledTimes(1);
-});
-
-it('removes rejected values', async () => {
-  const fn = jest.fn(key =>
-    key < 3 ? Promise.resolve(key) : Promise.reject(new Error('Rejected.')),
-  );
-
-  const memo = createPromiseMemo<number, number>(fn);
-
-  expect(fn).toHaveBeenCalledTimes(0);
-
-  for (let i = 0; i < 5; i++) {
-    if (i < 3) {
-      await expect(memo(i)).resolves.toBe(i);
-    } else {
-      await expect(memo(i)).rejects.toEqual(new Error('Rejected.'));
-    }
-  }
 });
