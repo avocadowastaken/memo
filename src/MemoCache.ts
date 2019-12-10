@@ -1,6 +1,6 @@
-import { CacheLike } from './CacheLike';
-import { LRUCache } from './internal/LRUCache';
-import { MapCache } from './internal/MapCache';
+import { MapLike } from './MapLike';
+import { LRUMap } from './maps/LRUMap';
+import { OrderedMap } from './maps/OrderedMap';
 
 export type MemoCacheKeyType<TKey> = TKey | string | number;
 
@@ -19,21 +19,18 @@ interface MemoCacheNode<TValue> {
   expiresAt: number;
 }
 
-export class MemoCache<TKey, TValue> implements CacheLike<TKey, TValue> {
-  protected readonly cache: CacheLike<
+export class MemoCache<TKey, TValue> implements MapLike<TKey, TValue> {
+  protected readonly cache: MapLike<
     MemoCacheKeyType<TKey>,
     MemoCacheNode<TValue>
   >;
 
   protected readonly cacheKeyFn: MemoCacheKeyFn<TKey>;
-
   protected readonly expireAfterWrite: number;
-
   protected readonly expireAfterAccess: number;
 
   constructor({
     maxSize,
-
     expireAfterWrite = 0,
     expireAfterAccess = 0,
     cacheKeyFn = (key: TKey) => key,
@@ -42,7 +39,7 @@ export class MemoCache<TKey, TValue> implements CacheLike<TKey, TValue> {
     this.expireAfterWrite = expireAfterWrite;
     this.expireAfterAccess = expireAfterAccess;
 
-    this.cache = !maxSize ? new MapCache() : new LRUCache({ maxSize });
+    this.cache = !maxSize ? new OrderedMap() : new LRUMap({ maxSize });
   }
 
   get(key: TKey): TValue | undefined {

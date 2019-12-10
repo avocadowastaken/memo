@@ -1,18 +1,6 @@
 import { createMemo } from '../createMemo';
 import { MemoCache } from '../MemoCache';
 
-function createCounter<TKey>(): (key: TKey) => number {
-  const cache = new Map<TKey, number>();
-
-  return (key: TKey): number => {
-    const count = (cache.get(key) || 0) + 1;
-
-    cache.set(key, count);
-
-    return count;
-  };
-}
-
 it("validates 'fn'", () => {
   expect(() => createMemo(null as any)).toThrowErrorMatchingInlineSnapshot(
     `"Memo: 'fn' expected to be a 'function'."`,
@@ -20,20 +8,20 @@ it("validates 'fn'", () => {
 });
 
 it('exposes cache', () => {
-  const memo = createMemo(createCounter());
+  const memo = createMemo(() => null);
 
   expect(memo.cache).toBeInstanceOf(MemoCache);
 });
 
 it("evaluates 'fn'", () => {
-  const fn = jest.fn(createCounter());
+  const fn = jest.fn(value => value + 1);
   const memo = createMemo(fn);
 
   expect(fn).toHaveBeenCalledTimes(0);
 
-  expect(memo(1)).toBe(1);
-  expect(fn).toHaveBeenCalledTimes(1);
+  expect(memo(1)).toBe(2);
+  expect(memo(1)).toBe(2);
+  expect(memo(1)).toBe(2);
 
-  expect(memo(1)).toBe(1);
   expect(fn).toHaveBeenCalledTimes(1);
 });
