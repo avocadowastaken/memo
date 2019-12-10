@@ -1,6 +1,6 @@
-import { assertFn } from '../internal/assertFn';
-import { MemoCacheOptions } from '../memo-cache/MemoCache';
-import { createMemo, MemoFn } from '../memo/createMemo';
+import { createMemo, MemoFn } from './createMemo';
+import { assertFn } from './internal/assertFn';
+import { MemoCacheOptions } from './MemoCache';
 
 export function createPromiseMemo<TKey, TValue>(
   fn: (key: TKey) => Promise<TValue>,

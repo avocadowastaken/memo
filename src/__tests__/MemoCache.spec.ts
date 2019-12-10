@@ -1,4 +1,4 @@
-import { runSizedCacheTests } from '../../__testutils__/runCacheTests';
+import { runSizedCacheTests } from '../__testutils__/runCacheTests';
 import { MemoCache } from '../MemoCache';
 
 runSizedCacheTests(maxSize => new MemoCache({ maxSize }));

@@ -1,5 +1,5 @@
-import { MemoCache } from '../../memo-cache/MemoCache';
 import { createMemo } from '../createMemo';
+import { MemoCache } from '../MemoCache';
 
 function createCounter<TKey>(): (key: TKey) => number {
   const cache = new Map<TKey, number>();

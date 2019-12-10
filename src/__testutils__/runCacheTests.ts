@@ -1,4 +1,4 @@
-import { CacheLike } from '../memo-cache/CacheLike';
+import { CacheLike } from '../CacheLike';
 
 const MAX_SIZE = 5;
 
