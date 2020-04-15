@@ -1,11 +1,11 @@
 import { runSizedCacheTests } from '../__testutils__/runCacheTests';
 import { MemoCache } from '../MemoCache';
 
-runSizedCacheTests(maxSize => new MemoCache({ maxSize }));
+runSizedCacheTests((maxSize) => new MemoCache({ maxSize }));
 
 it('allows to convert complex keys', () => {
   const cache = new MemoCache<{ id: number }, number>({
-    cacheKeyFn: key => key.id,
+    cacheKeyFn: (key) => key.id,
   });
 
   for (let i = 0; i < 5; i++) {
