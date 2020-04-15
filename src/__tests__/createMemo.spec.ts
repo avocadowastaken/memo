@@ -14,7 +14,7 @@ it('exposes cache', () => {
 });
 
 it("evaluates 'fn'", () => {
-  const fn = jest.fn(value => value + 1);
+  const fn = jest.fn((value) => value + 1);
   const memo = createMemo(fn);
 
   expect(fn).toHaveBeenCalledTimes(0);
