@@ -1,14 +1,6 @@
 import { createPromiseMemo } from '../createPromiseMemo';
 import { PromiseMemoCache } from '../PromiseMemoCache';
 
-it("validates 'fn'", () => {
-  expect(() =>
-    createPromiseMemo(null as any),
-  ).toThrowErrorMatchingInlineSnapshot(
-    `"Memo: 'fn' expected to be a 'function'."`,
-  );
-});
-
 it('exposes cache', () => {
   const memo = createPromiseMemo(() => Promise.resolve());
 
@@ -16,7 +8,7 @@ it('exposes cache', () => {
 });
 
 it("evaluates 'fn'", async () => {
-  const fn = jest.fn((value) => value + 1);
+  const fn = jest.fn((value: number) => Promise.resolve(value + 1));
   const memo = createPromiseMemo(fn);
 
   expect(fn).toHaveBeenCalledTimes(0);

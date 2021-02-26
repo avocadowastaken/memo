@@ -27,17 +27,15 @@ export class LRUMap<TKey, TValue> extends LinkedMap<TKey, TValue> {
 
   private removeLatterlyUsed(): void {
     const { maxSize } = this.options;
-    const itemsToRemove = this.map.size - maxSize + 1;
+    let itemsToRemove = this.map.size - maxSize + 1;
 
     if (itemsToRemove > 0) {
-      const entries = this.map.entries();
-
-      for (let i = 0; i < itemsToRemove; i++) {
-        const {
-          value: [key],
-        } = entries.next();
-
-        this.clear(key);
+      for (const key of this.map.keys()) {
+        if (itemsToRemove-- > 0) {
+          this.clear(key);
+        } else {
+          break;
+        }
       }
     }
   }

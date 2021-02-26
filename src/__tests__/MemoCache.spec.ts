@@ -1,5 +1,5 @@
-import { runSizedCacheTests } from '../__testutils__/runCacheTests';
 import { MemoCache } from '../MemoCache';
+import { runSizedCacheTests } from '../__testutils__/runCacheTests';
 
 runSizedCacheTests((maxSize) => new MemoCache({ maxSize }));
 
@@ -40,7 +40,7 @@ it('expires values after write', () => {
   spy.mockRestore();
 });
 
-it('expires values after access', async () => {
+it('expires values after access', () => {
   let time = 0;
   const cache = new MemoCache({ expireAfterAccess: 10 });
   const spy = jest.spyOn(Date, 'now').mockImplementation(() => time);

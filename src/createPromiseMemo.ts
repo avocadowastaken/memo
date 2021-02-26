@@ -1,4 +1,3 @@
-import { assertFn } from './internal/assertFn';
 import { MemoCacheOptions } from './MemoCache';
 import { PromiseMemoCache } from './PromiseMemoCache';
 
@@ -12,8 +11,6 @@ export function createPromiseMemo<TKey, TValue>(
   fn: (key: TKey) => Promise<TValue>,
   options?: MemoCacheOptions<TKey>,
 ): PromiseMemoFn<TKey, TValue> {
-  assertFn(fn);
-
   const cache = new PromiseMemoCache<TKey, TValue>(options);
 
   memo.cache = cache;

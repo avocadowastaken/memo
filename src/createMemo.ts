@@ -1,4 +1,3 @@
-import { assertFn } from './internal/assertFn';
 import { MemoCache, MemoCacheOptions } from './MemoCache';
 
 export interface MemoFn<TKey, TValue> {
@@ -11,8 +10,6 @@ export function createMemo<TKey, TValue>(
   fn: (key: TKey) => TValue,
   options?: MemoCacheOptions<TKey>,
 ): MemoFn<TKey, TValue> {
-  assertFn(fn);
-
   const cache = new MemoCache<TKey, TValue>(options);
 
   memo.cache = cache;
