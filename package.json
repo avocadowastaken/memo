@@ -7,12 +7,51 @@
   "author": "Umidbek Karimov",
   "scripts": {
     "build": "pika build",
-    "prebump": "yarn tsc && yarn lint",
-    "bump": "pika publish --no-publish",
+    "prerelease": "yarn --force && yarn tsc && yarn lint",
+    "release": "pika publish",
     "lint": "js-tools lint",
     "tdd": "jest --watch",
     "test": "jest --coverage",
     "version": "yarn build"
+  },
+  "prettier": "@superdispatch/prettier-config",
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": "*.js",
+        "extends": "plugin:@superdispatch/node"
+      },
+      {
+        "files": "*.ts",
+        "parserOptions": {
+          "project": "./tsconfig.json"
+        },
+        "extends": [
+          "plugin:@superdispatch/typescript"
+        ]
+      },
+      {
+        "files": "**/__tests__/**/*.ts",
+        "extends": "plugin:@superdispatch/ts-jest"
+      },
+      {
+        "files": "**/{__tests__,__testutils__}/**/*.ts",
+        "rules": {
+          "quotes": "off",
+          "@typescript-eslint/no-explicit-any": "off"
+        }
+      }
+    ],
+    "root": true
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/pkg/",
+      "/node_modules/"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.spec.ts"
+    ]
   },
   "devDependencies": {
     "@pika/pack": "^0.5.0",

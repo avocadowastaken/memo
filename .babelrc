@@ -1,0 +1,12 @@
+{
+  "presets": [
+    [
+      "@superdispatch/babel-preset",
+      {
+        "loose": true,
+        "targets": "esmodules",
+        "optimize": { "runtime": false, "devExpressions": true }
+      }
+    ]
+  ]
+}
