@@ -5,8 +5,12 @@
   "repository": "https://github.com/umidbekk/memo.git",
   "license": "MIT",
   "author": "Umidbek Karimov",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
   "scripts": {
-    "build": "pika build",
+    "build": "rapidbundle",
     "prerelease": "yarn --force && yarn tsc && yarn lint",
     "release": "pika publish",
     "lint": "js-tools lint",
@@ -54,53 +58,19 @@
     ]
   },
   "devDependencies": {
-    "@pika/pack": "^0.5.0",
-    "@pika/plugin-build-node": "^0.9.2",
-    "@pika/plugin-build-types": "^0.9.2",
-    "@pika/plugin-build-web": "^0.9.2",
-    "@pika/plugin-bundle-types": "^0.9.2",
-    "@pika/plugin-standard-pkg": "^0.9.2",
     "@superdispatch/babel-preset": "^0.3.0",
     "@superdispatch/eslint-plugin": "^0.3.0",
     "@superdispatch/js-tools": "^0.3.0",
     "@superdispatch/prettier-config": "^0.3.0",
     "@superdispatch/tsconfig": "^0.3.0",
     "@types/jest": "^26.0.20",
-    "codecov": "^3.8.1",
     "eslint": "^7.20.0",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
+    "rapidbundle": "^0.11.1",
     "typescript": "^4.2.2"
   },
   "engines": {
     "node": ">=10.0.0"
-  },
-  "@pika/pack": {
-    "pipeline": [
-      [
-        "@pika/plugin-standard-pkg",
-        {
-          "exclude": [
-            "**/__tests__/**/*",
-            "**/__testutils__/**/*"
-          ]
-        }
-      ],
-      [
-        "@pika/plugin-build-node"
-      ],
-      [
-        "@pika/plugin-build-web"
-      ],
-      [
-        "@pika/plugin-build-types",
-        {
-          "tsconfig": "./tsconfig.build.json"
-        }
-      ],
-      [
-        "@pika/plugin-bundle-types"
-      ]
-    ]
   }
 }

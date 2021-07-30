@@ -1,5 +1,5 @@
 # Distributive
-/pkg
+/dist
 
 # Tests
 /coverage
@@ -9,4 +9,3 @@
 
 # Dependencies
 node_modules/
-
