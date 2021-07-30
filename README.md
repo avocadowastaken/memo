@@ -13,5 +13,5 @@ Memoization utils for JavaScript
 ### Installation
 
 ```bash
-yarn add create-memo
+npm i create-memo
 ```
