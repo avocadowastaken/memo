@@ -1,7 +1,33 @@
 {
-  "include": ["src"],
-  "extends": "@superdispatch/tsconfig",
   "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.cache/tsconfig.tsbuildinfo"
+    //
+    // Disable transpile.
+    //
+
+    "noEmit": true,
+    "jsx": "preserve",
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+
+    //
+    // Type checks
+    //
+
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+
+    //
+    // Module resolution
+    //
+
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
   }
 }
