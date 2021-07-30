@@ -51,11 +51,8 @@
   },
   "jest": {
     "coveragePathIgnorePatterns": [
-      "/pkg/",
-      "/node_modules/"
-    ],
-    "testMatch": [
-      "**/__tests__/**/*.spec.ts"
+      "/node_modules/",
+      "/__testutils__/"
     ]
   },
   "devDependencies": {
