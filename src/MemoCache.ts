@@ -1,6 +1,6 @@
-import { MapLike } from './MapLike';
-import { LRUMap } from './maps/LRUMap';
-import { OrderedMap } from './maps/OrderedMap';
+import { MapLike } from "./MapLike";
+import { LRUMap } from "./maps/LRUMap";
+import { OrderedMap } from "./maps/OrderedMap";
 
 export type MemoCacheKeyType<TKey> = TKey | string | number;
 
@@ -50,7 +50,7 @@ export class MemoCache<TKey, TValue> implements MapLike<TKey, TValue> {
         if (this.expireAfterAccess) {
           node.expiresAt = Math.max(
             node.expiresAt,
-            Date.now() + this.expireAfterAccess,
+            Date.now() + this.expireAfterAccess
           );
         }
 
@@ -66,7 +66,7 @@ export class MemoCache<TKey, TValue> implements MapLike<TKey, TValue> {
   prime(key: TKey, value: TValue): this {
     const expiresAfter = Math.max(
       this.expireAfterWrite || 0,
-      this.expireAfterAccess || 0,
+      this.expireAfterAccess || 0
     );
 
     const node = {

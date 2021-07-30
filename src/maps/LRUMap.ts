@@ -1,4 +1,4 @@
-import { LinkedMap } from './LinkedMap';
+import { LinkedMap } from "./LinkedMap";
 
 export interface LRUCacheOptions {
   readonly maxSize: number;

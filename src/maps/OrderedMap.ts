@@ -1,4 +1,4 @@
-import { MapLike } from '../MapLike';
+import { MapLike } from "../MapLike";
 
 export class OrderedMap<TKey, TValue> implements MapLike<TKey, TValue> {
   protected map = new Map<TKey, TValue>();

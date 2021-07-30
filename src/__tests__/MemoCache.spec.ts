@@ -1,9 +1,9 @@
-import { MemoCache } from '../MemoCache';
-import { runSizedCacheTests } from '../__testutils__/runCacheTests';
+import { MemoCache } from "../MemoCache";
+import { runSizedCacheTests } from "../__testutils__/runCacheTests";
 
 runSizedCacheTests((maxSize) => new MemoCache({ maxSize }));
 
-it('allows to convert complex keys', () => {
+it("allows to convert complex keys", () => {
   const cache = new MemoCache<{ id: number }, number>({
     cacheKeyFn: (key) => key.id,
   });
@@ -16,10 +16,10 @@ it('allows to convert complex keys', () => {
   }
 });
 
-it('expires values after write', () => {
+it("expires values after write", () => {
   let time = 0;
   const cache = new MemoCache({ expireAfterWrite: 10 });
-  const spy = jest.spyOn(Date, 'now').mockImplementation(() => time);
+  const spy = jest.spyOn(Date, "now").mockImplementation(() => time);
 
   for (let i = 0; i < 5; i++) {
     cache.prime(i, 1);
@@ -40,10 +40,10 @@ it('expires values after write', () => {
   spy.mockRestore();
 });
 
-it('expires values after access', () => {
+it("expires values after access", () => {
   let time = 0;
   const cache = new MemoCache({ expireAfterAccess: 10 });
-  const spy = jest.spyOn(Date, 'now').mockImplementation(() => time);
+  const spy = jest.spyOn(Date, "now").mockImplementation(() => time);
 
   for (let i = 0; i < 5; i++) {
     cache.prime(i, 1);

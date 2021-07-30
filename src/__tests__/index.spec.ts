@@ -1,6 +1,6 @@
-import * as api from '../index';
+import * as api from "../index";
 
-it('exposes public api', () => {
+it("exposes public api", () => {
   expect(api).toMatchInlineSnapshot(`
     Object {
       "MemoCache": [Function],

@@ -1,5 +1,5 @@
-import { MemoCacheOptions } from './MemoCache';
-import { PromiseMemoCache } from './PromiseMemoCache';
+import { MemoCacheOptions } from "./MemoCache";
+import { PromiseMemoCache } from "./PromiseMemoCache";
 
 export interface PromiseMemoFn<TKey, TValue> {
   (key: TKey): Promise<TValue>;
@@ -9,7 +9,7 @@ export interface PromiseMemoFn<TKey, TValue> {
 
 export function createPromiseMemo<TKey, TValue>(
   fn: (key: TKey) => Promise<TValue>,
-  options?: MemoCacheOptions<TKey>,
+  options?: MemoCacheOptions<TKey>
 ): PromiseMemoFn<TKey, TValue> {
   const cache = new PromiseMemoCache<TKey, TValue>(options);
 

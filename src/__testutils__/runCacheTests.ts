@@ -1,11 +1,11 @@
-import { MapLike } from '../MapLike';
+import { MapLike } from "../MapLike";
 
 const MAX_SIZE = 5;
 
 export function runBaseCacheTests(
-  factory: () => MapLike<number, number>,
+  factory: () => MapLike<number, number>
 ): void {
-  it('primes value', () => {
+  it("primes value", () => {
     const cache = factory();
 
     for (let i = 0; i < MAX_SIZE; i++) {
@@ -15,7 +15,7 @@ export function runBaseCacheTests(
     }
   });
 
-  it('clears value', () => {
+  it("clears value", () => {
     const cache = factory();
 
     for (let i = 0; i < MAX_SIZE; i++) {
@@ -24,16 +24,16 @@ export function runBaseCacheTests(
 
           .prime(i, i + 1)
           .clear(i)
-          .get(i),
+          .get(i)
       ).toBeUndefined();
     }
   });
 
-  it('not throws on clear if value not exist', () => {
+  it("not throws on clear if value not exist", () => {
     expect(() => factory().clear(1)).not.toThrow();
   });
 
-  it('clears all values', () => {
+  it("clears all values", () => {
     const cache = factory();
 
     for (let i = 0; i < MAX_SIZE; i++) {
@@ -49,11 +49,11 @@ export function runBaseCacheTests(
 }
 
 export function runSizedCacheTests(
-  factory: (maxSize: number) => MapLike<number, number>,
+  factory: (maxSize: number) => MapLike<number, number>
 ): void {
   runBaseCacheTests(() => factory(MAX_SIZE));
 
-  it('removes outdated values', () => {
+  it("removes outdated values", () => {
     const cache = factory(MAX_SIZE);
 
     for (let i = 1; i <= MAX_SIZE; i++) {

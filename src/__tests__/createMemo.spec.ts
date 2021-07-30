@@ -1,7 +1,7 @@
-import { createMemo } from '../createMemo';
-import { MemoCache } from '../MemoCache';
+import { createMemo } from "../createMemo";
+import { MemoCache } from "../MemoCache";
 
-it('exposes cache', () => {
+it("exposes cache", () => {
   const memo = createMemo(() => null);
 
   expect(memo.cache).toBeInstanceOf(MemoCache);

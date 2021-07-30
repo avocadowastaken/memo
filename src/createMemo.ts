@@ -1,4 +1,4 @@
-import { MemoCache, MemoCacheOptions } from './MemoCache';
+import { MemoCache, MemoCacheOptions } from "./MemoCache";
 
 export interface MemoFn<TKey, TValue> {
   (key: TKey): TValue;
@@ -8,7 +8,7 @@ export interface MemoFn<TKey, TValue> {
 
 export function createMemo<TKey, TValue>(
   fn: (key: TKey) => TValue,
-  options?: MemoCacheOptions<TKey>,
+  options?: MemoCacheOptions<TKey>
 ): MemoFn<TKey, TValue> {
   const cache = new MemoCache<TKey, TValue>(options);
 

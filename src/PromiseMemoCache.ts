@@ -1,4 +1,4 @@
-import { MemoCache } from './MemoCache';
+import { MemoCache } from "./MemoCache";
 
 export class PromiseMemoCache<TKey, TValue> extends MemoCache<
   TKey,
@@ -11,7 +11,7 @@ export class PromiseMemoCache<TKey, TValue> extends MemoCache<
         this.clear(key);
 
         return Promise.reject(error);
-      }),
+      })
     );
   }
 }

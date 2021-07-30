@@ -20,7 +20,6 @@
     "test": "jest --coverage",
     "version": "yarn build"
   },
-  "prettier": "@superdispatch/prettier-config",
   "eslintConfig": {
     "overrides": [
       {
@@ -63,11 +62,12 @@
     "@superdispatch/babel-preset": "^0.4.0",
     "@superdispatch/eslint-plugin": "^0.4.1",
     "@superdispatch/js-tools": "^0.4.0",
-    "@superdispatch/prettier-config": "^0.4.0",
     "@types/jest": "^26.0.24",
     "eslint": "^7.31.0",
     "jest": "^27.0.6",
     "prettier": "^2.3.2",
+    "prettier-plugin-organize-imports": "^2.3.3",
+    "prettier-plugin-packagejson": "^2.2.11",
     "rapidbundle": "^0.11.1",
     "typescript": "^4.2.2"
   },

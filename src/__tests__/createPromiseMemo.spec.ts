@@ -1,7 +1,7 @@
-import { createPromiseMemo } from '../createPromiseMemo';
-import { PromiseMemoCache } from '../PromiseMemoCache';
+import { createPromiseMemo } from "../createPromiseMemo";
+import { PromiseMemoCache } from "../PromiseMemoCache";
 
-it('exposes cache', () => {
+it("exposes cache", () => {
   const memo = createPromiseMemo(() => Promise.resolve());
 
   expect(memo.cache).toBeInstanceOf(PromiseMemoCache);

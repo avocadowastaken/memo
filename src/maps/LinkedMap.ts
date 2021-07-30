@@ -1,4 +1,4 @@
-import { MapLike } from '../MapLike';
+import { MapLike } from "../MapLike";
 
 interface LinkedMapNode<TKey, TValue> {
   key: TKey;
