@@ -59,7 +59,7 @@
     "@babel/preset-typescript": "^7.14.5",
     "@superdispatch/eslint-plugin": "^0.4.1",
     "@superdispatch/js-tools": "^0.4.0",
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^27.0.0",
     "eslint": "^7.31.0",
     "jest": "^27.0.6",
     "np": "^7.5.0",
