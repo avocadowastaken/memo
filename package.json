@@ -13,40 +13,11 @@
   ],
   "scripts": {
     "build": "rapidbundle",
-    "lint": "js-tools lint",
-    "prerelease": "npm i && npx tsc && npm run lint && npm run build",
+    "lint": "prettier . --check",
+    "prerelease": "npx tsc && npm run lint && npm run build",
     "release": "np --no-2fa",
     "tdd": "jest --watch",
     "test": "jest --coverage"
-  },
-  "eslintConfig": {
-    "overrides": [
-      {
-        "files": "*.js",
-        "extends": "plugin:@superdispatch/node"
-      },
-      {
-        "files": "*.ts",
-        "parserOptions": {
-          "project": "./tsconfig.json"
-        },
-        "extends": [
-          "plugin:@superdispatch/typescript"
-        ]
-      },
-      {
-        "files": "**/__tests__/**/*.ts",
-        "extends": "plugin:@superdispatch/ts-jest"
-      },
-      {
-        "files": "**/{__tests__,__testutils__}/**/*.ts",
-        "rules": {
-          "quotes": "off",
-          "@typescript-eslint/no-explicit-any": "off"
-        }
-      }
-    ],
-    "root": true
   },
   "jest": {
     "coveragePathIgnorePatterns": [
@@ -57,10 +28,7 @@
   "devDependencies": {
     "@babel/preset-env": "7.16.0",
     "@babel/preset-typescript": "7.16.0",
-    "@superdispatch/eslint-plugin": "0.5.0",
-    "@superdispatch/js-tools": "0.5.0",
     "@types/jest": "27.0.2",
-    "eslint": "8.2.0",
     "jest": "27.3.1",
     "np": "7.5.0",
     "prettier": "2.4.1",
@@ -70,7 +38,7 @@
     "typescript": "4.4.4"
   },
   "engines": {
-    "node": ">=12.0.0",
+    "node": ">=12",
     "npm": ">=7"
   }
 }
